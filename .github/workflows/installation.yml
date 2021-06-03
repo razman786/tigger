@@ -24,7 +24,7 @@ jobs:
         pip install flake8 pytest
     - name: Installation script
       run: |
-        sudo ./install_tigger_ubuntu.sh
+        ./install_tigger_ubuntu.sh
     - name: Check installation log
       run: |
         cat tigger_installer.log
@@ -45,4 +45,4 @@ jobs:
         echo "$PATH"
     - name: Test command
       run: |
-        tigger 
+        $HOME/.local/bin/tigger 
