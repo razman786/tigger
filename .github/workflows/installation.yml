@@ -31,6 +31,15 @@ jobs:
     - name: Check installer error log file
       run: |
         cat tigger_installer.err
+    - name: Check PyQt5 is installed
+      run: |
+        dpkg --get-selections|grep -i python3-pyqt5
+    - name: Check Python Path
+      run: |
+        python -c "import sys; print('\n'.join(sys.path))"
+    - name: Check PyQt5 is available to Python
+      run: |
+        python -c "import PyQt5"
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
