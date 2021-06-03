@@ -39,7 +39,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Config ENV
       run: |
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
+        echo "/root/.local/bin" >> $GITHUB_PATH
     - name: Check ENV
       run: |
         echo "$PATH"
