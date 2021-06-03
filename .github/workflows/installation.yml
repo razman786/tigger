@@ -14,6 +14,7 @@ jobs:
     - name: Setup VM env
       run: |
         sudo apt update
+        sudo apt install xvfb
     - name: Install python dependencies
       run: |
         pip3 install mypy
@@ -51,4 +52,4 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test command
       run: |
-        QT_QPA_PLATFORM=offscreen $HOME/.local/bin/tigger
+        xvfb-run python3 $HOME/.local/bin/tigger
