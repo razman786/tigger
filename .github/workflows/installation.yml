@@ -67,4 +67,4 @@ jobs:
     - name: Test command
       run: |
         xvfb-run -a $HOME/.local/bin/tigger & sleep 10
-        killall tigger     killall tigger
+        killall tigger
