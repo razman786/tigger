@@ -52,4 +52,5 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test command
       run: |
-        xvfb-run -a $HOME/.local/bin/tigger & sleep 10 && killall tigger
+        xvfb-run -a $HOME/.local/bin/tigger | grep 'Detected screen size' & sleep 30
+        killall tigger
