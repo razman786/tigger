@@ -46,7 +46,7 @@ jobs:
         ls /usr/lib/python3/dist-packages/PyQt5
     - name: Check PyQt5 available in pip
       run: |
-        pip list|grep PyQt5
+        pip3 list|grep PyQt5
     - name: Check PyQt5 is available to Python
       run: |
         python -c "import PyQt5"
