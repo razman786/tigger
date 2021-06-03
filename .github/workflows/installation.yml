@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - name: Setup VM env
+    - name: Setup runner VM
       run: |
         sudo apt update
         sudo apt install xvfb
     - name: Install python dependencies
       run: |
-        pip3 install mypy
+        pip3 install --upgrade mypy setuptools wheel pip
         pip3 install flake8 pytest
     - name: Installation script
       run: |
@@ -28,22 +28,6 @@ jobs:
     - name: Check installer error log file
       run: |
         cat tigger_installer.err
-    - name: Check PyQt5 is installed
-      run: |
-        dpkg --get-selections|grep -i python3-pyqt5
-    - name: Check Python Path
-      run: |
-        python -c "import sys; print('\n'.join(sys.path))"
-    - name: Check for PyQt5 Python installed files
-      run: |
-        ls /usr/lib/python3/dist-packages/PyQt5
-    - name: Check PyQt5 available in pip3
-      run: |
-        pip3 list
-        pip3 list|grep PyQt5
-    - name: Check PyQt5 is available to Python
-      run: |
-        python -c "import PyQt5"
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -52,5 +36,5 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test command
       run: |
-        xvfb-run -a $HOME/.local/bin/tigger & sleep 30
+        xvfb-run -a $HOME/.local/bin/tigger & sleep 10
         killall tigger
