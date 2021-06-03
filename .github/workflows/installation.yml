@@ -21,11 +21,10 @@ jobs:
     - name: Setup VM env
       run: |
         sudo apt update
-        sudo apt install python3-setuptools python3-pip
     - name: Install python dependencies
       run: |
-        pip install --upgrade mypy setuptools wheel pip
-        pip install flake8 pytest
+        pip3 install mypy
+        pip3 install flake8 pytest
     - name: Installation script
       run: |
         ./install_tigger_ubuntu.sh
@@ -44,7 +43,7 @@ jobs:
     - name: Check for PyQt5 Python installed files
       run: |
         ls /usr/lib/python3/dist-packages/PyQt5
-    - name: Check PyQt5 available in pip
+    - name: Check PyQt5 available in pip3
       run: |
         pip3 list|grep PyQt5
     - name: Check PyQt5 is available to Python
