@@ -51,4 +51,4 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test command
       run: |
-        $HOME/.local/bin/tigger
+        QT_QPA_PLATFORM=offscreen $HOME/.local/bin/tigger
